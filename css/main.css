@@ -5,7 +5,8 @@ img{
 	min-width-width:100%;
 }
 .fotoimg{
-	min-width-width:50%;
+	width: 200px;
+	height: 200px;
 }
 .quitar-float{
 	float: none;
@@ -84,4 +85,8 @@ a,.azul{
 	animation-delay : 2s;
 	
 
+}
+
+.divGris{
+	background: #ccc;	
 }
