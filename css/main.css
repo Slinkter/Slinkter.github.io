@@ -4,6 +4,9 @@ font-family: 'Lato', sans-serif;
 img{
 	min-width-width:100%;
 }
+.fotoimg{
+	min-width-width:50%;
+}
 .quitar-float{
 	float: none;
 }
