@@ -14,17 +14,27 @@
     <script>
     document.addEventListener('DOMContentLoaded', function() {
     // TODO: Implement getParameterByName()
+    var url_string = window.location.href;
+    var url = new URL(url_string);
+    var c = url.searchParams.get("c");
+    console.log(c);
+
 
     // Get the action to complete.
-    var mode = getParameterByName('mode');
+    var mode =  url.searchParams.get("mode");
+    console.log(mode);
     // Get the one-time code from the query parameter.
-    var actionCode = getParameterByName('oobCode');
+    var actionCode = url.searchParams.get('oobCode');
+    console.log(actionCode);
     // (Optional) Get the API key from the query parameter.
-    var apiKey = getParameterByName('apiKey');
+    var apiKey = url.searchParams.get('apiKey');
+    console.log(apiKey);
     // (Optional) Get the continue URL from the query parameter if available.
-    var continueUrl = getParameterByName('continueUrl');
+    var continueUrl = url.searchParams.get('continueUrl');
+    console.log(continueUrl);
     // (Optional) Get the language code if available.
-    var lang = getParameterByName('lang') || 'es-419';
+    var lang = url.searchParams.get('lang') || 'es-419';
+    console.log(lang);
 
     // Configure the Firebase SDK.
     // This is the minimum configuration required for the API to be used.
@@ -53,8 +63,10 @@
         // Error: invalid mode.
     }
     }, false);
-      
-      function handleResetPassword(auth, actionCode, continueUrl, lang) {
+
+
+
+function handleResetPassword(auth, actionCode, continueUrl, lang) {
     // Localize the UI to the selected language as determined by the lang
     // parameter.
     var accountEmail;
@@ -133,6 +145,20 @@
       // again.
     });
   }
+
+  function getParameterByName(name) {
+    if (name !== "" && name !== null && name != undefined) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    } else {
+        var arr = location.href.split("/");
+        return arr[arr.length - 1];
+    }
+
+}
+
     </script>
   </head>
   <body>
